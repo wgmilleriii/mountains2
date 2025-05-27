@@ -1,0 +1,17 @@
+{
+  "name": "mountains",
+  "version": "1.0.0",
+  "description": "New Mexico elevation data visualization",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "collect-data": "node scripts/collectElevationData.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "gdal-async": "^3.8.3",
+    "geotiff": "^2.1.3",
+    "pngjs": "^7.0.0",
+    "sharp": "^0.33.2"
+  }
+}
