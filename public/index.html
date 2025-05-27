@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Mexico Elevation Viewer</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        #instructions {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        #instructions h3 {
+            margin-top: 0;
+            color: #212529;
+        }
+        #instructions ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        #map {
+            height: 40vh;
+            border: 1px solid #ccc;
+        }
+        #svgContainer {
+            height: 40vh;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        #viewerSvg {
+            width: 100%;
+            height: 100%;
+            background-color: #f5f5f5;
+        }
+        #legend {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #legend .color-scale {
+            width: 200px;
+            height: 20px;
+            margin: 5px 0;
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="instructions">
+            <h3>How to Use</h3>
+            <ol>
+                <li>Click on the map to set your standing point (marked with a black square)</li>
+                <li>Click again to set your viewing point (creates a circle and viewing arc)</li>
+                <li>The elevation profile between these points will be displayed below</li>
+                <li>Hover over points in the profile to see exact elevations</li>
+                <li>Click anywhere on the map again to reset and start over</li>
+            </ol>
+        </div>
+        <div id="map"></div>
+        <div id="svgContainer">
+            <svg id="viewerSvg"></svg>
+            <div id="legend">
+                <h4>Elevation Scale</h4>
+                <div class="color-scale"></div>
+                <div class="scale-labels">
+                    <span style="float:left">Low</span>
+                    <span style="float:right">High</span>
+                </div>
+            </div>
+        </div>
+        <table id="pointsTable">
+            <thead>
+                <tr>
+                    <th>Point</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Elevation (m)</th>
+                    <th>Distance (km)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/viewer.js" type="module"></script>
+</body>
+</html> 
